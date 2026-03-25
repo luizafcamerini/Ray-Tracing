@@ -1,0 +1,3 @@
+class Film():
+    def __init__(resolution, pixel, sampler, image):
+        ...
