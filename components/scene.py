@@ -4,7 +4,7 @@ class Scene:
     def __init__(self):
         self.objects = []
         self.lights = []
-        self.ambient_light = np.array([0.1, 0.1, 0.1])
+        self.ambient_light = np.array([0.7, 0.7, 0.7])
 
     def add_object(self, obj):
         self.objects.append(obj)

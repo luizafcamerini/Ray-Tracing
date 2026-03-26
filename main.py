@@ -38,7 +38,7 @@ scene.add_object(plane)
 
 #Luz
 light = PointLight(
-    pos=[2, 5, 1],
+    pos=[0, 5, -3],
     power=20
 )
 scene.add_light(light)
@@ -59,7 +59,7 @@ camera = Camera(
 # FILM (imagem)
 # =========================
 
-film = Film(width=400, height=400, samples=1)
+film = Film(width=400, height=400, samples=10)
 
 # =========================
 # MAIN LOOP
