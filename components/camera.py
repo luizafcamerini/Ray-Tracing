@@ -8,7 +8,6 @@ class Camera:
         self.up = np.array(up)
         self.fov = fov
         self.aspect = aspect
-
         self.compute_basis()
 
     def compute_basis(self):

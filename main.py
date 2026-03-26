@@ -67,21 +67,15 @@ film = Film(width=400, height=400, samples=1)
 
 for j in range(film.height):
     print(f"Rendering line {j+1}/{film.height}")
-
     for i in range(film.width):
-
         color = np.array([0.0, 0.0, 0.0])
 
-        # antialiasing (mesmo que 1 sample)
         for _ in range(film.sample_count()):
             x, y = film.get_sample(i, j)
-
             ray = camera.generate_ray(x, y)
-
             color += scene.trace_ray(ray)
 
         color /= film.sample_count()
-
         film.set_pixel(i, j, color)
 
 film.save("render.png")
