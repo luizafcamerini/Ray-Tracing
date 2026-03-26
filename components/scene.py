@@ -1,0 +1,33 @@
+import numpy as np
+
+class Scene:
+    def __init__(self):
+        self.objects = []
+        self.lights = []
+        self.ambient_light = np.array([0.1, 0.1, 0.1])
+
+    def add_object(self, obj):
+        self.objects.append(obj)
+
+    def add_light(self, light):
+        self.lights.append(light)
+
+    def compute_intersection(self, ray):
+        closest_hit = None
+        min_t = float("inf")
+
+        for obj in self.objects:
+            hit = obj.intersect(ray)
+            if hit and hit.t < min_t:
+                min_t = hit.t
+                closest_hit = hit
+
+        return closest_hit
+
+    def trace_ray(self, ray):
+        hit = self.compute_intersection(ray)
+
+        if hit is None:
+            return np.array([0, 0, 0])  # background
+
+        return hit.material.eval(self, hit, ray.origin)

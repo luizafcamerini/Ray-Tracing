@@ -3,7 +3,7 @@ from pydantic import BaseModel
 
 class MatrixIdentity():
     """Represents a 4X4 identity matrix."""
-    def __init__():
+    def __init__(self):
         self.matrix = np.array([
                 [1, 0, 0, 0],
                 [0, 1, 0, 0],
