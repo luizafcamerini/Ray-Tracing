@@ -19,7 +19,11 @@ class PhongMaterial(Material):
         n = self.normalize(hit.normal)
         v = self.normalize(eye - p)
         for light in scene.lights:
-            Li, l = light.radiance(scene, p)
+            if hasattr(light, 'sample_radiance'):
+                Li, l = light.sample_radiance(scene, p)
+            else:
+                Li, l = light.radiance(scene, p)
+            
             shadow_ray = Ray(p + 1e-5 * l, l)
             shadow_hit = scene.compute_intersection(shadow_ray)
             if shadow_hit is not None:
